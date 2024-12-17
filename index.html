@@ -20,130 +20,123 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Hace que el cuerpo ocupe toda la altura */
+      height: 100vh;
     }
 
-    /* Contenedor del formulario */
+    /* Contenedor del formulario compacto */
     .form-container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #fff;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
+      max-width: 500px; /* Reducimos el ancho */
       width: 100%;
-      margin-top: 50px; /* Espacio adicional arriba del formulario */
     }
 
-    /* Logo arriba */
+    /* Logo más pequeño */
     .logo {
-      margin-bottom: 1rem; /* Espacio entre el logo y el título */
+      margin-bottom: 1rem;
     }
 
     .logo img {
-      width: 250px; /* Tamaño del logo */
+      width: 200px; /* Reducimos el tamaño del logo */
       height: auto;
     }
 
-    /* Título del formulario */
+    /* Título más pequeño */
     h2 {
       color: #004aad;
-      margin-bottom: 1rem; /* Espacio entre el título y los campos */
-      font-size: 2rem;
-      font-weight: bold; /* Título en negrita */
+      margin-bottom: 1rem;
+      font-size: 1.5rem; /* Reducimos el tamaño del título */
+      font-weight: bold;
       text-align: center;
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem; /* Menos espacio entre los campos */
       width: 100%;
     }
 
     label {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #333;
-      margin-bottom: 0.5rem;
-      font-weight: bold; /* Etiquetas en negrita */
+      margin-bottom: 0.3rem;
+      font-weight: bold;
     }
 
-    /* Barra de selección con color vibrante */
+    /* Barra de selección más pequeña */
     input[type="range"] {
       width: 100%;
-      height: 10px; /* Alto de la barra */
-      background: #004aad; /* Color de la pista */
+      height: 8px; /* Reducimos la altura de la barra */
+      background: #004aad;
       border-radius: 5px;
       outline: none;
-      transition: background 0.3s ease;
     }
 
     input[type="range"]:focus {
-      background: #28a745; /* Color cuando se enfoca */
+      background: #28a745;
     }
 
     input[type="range"]::-webkit-slider-runnable-track {
-      background: #004aad; /* Color de la pista de la barra */
+      background: #004aad;
       border-radius: 5px;
-      height: 10px;
+      height: 8px;
     }
 
     input[type="range"]::-webkit-slider-thumb {
-      width: 20px;
-      height: 20px;
+      width: 18px; /* Reducimos el tamaño del control deslizante */
+      height: 18px;
       background: #fff;
       border: 2px solid #004aad;
       border-radius: 50%;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="range"]:hover::-webkit-slider-thumb {
-      background-color: #004aad; /* Cambio de color al pasar el mouse */
     }
 
     .range-labels {
       display: flex;
       justify-content: space-between;
+      margin-top: 0.3rem;
+    }
+
+    /* Estilo para el monto seleccionado */
+    #monto-display {
+      font-size: 1.5rem; /* Reducimos el tamaño del monto */
+      font-weight: bold;
+      color: #004aad;
       margin-top: 0.5rem;
     }
 
-    /* Estilos para el monto seleccionado */
-    #monto-display {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #004aad;
-      margin-top: 1rem;
-    }
-
-    /* Campos select con color de fondo */
+    /* Campos select más pequeños */
     select {
       width: 100%;
-      padding: 0.75rem;
-      font-size: 1.1rem;
+      padding: 0.6rem; /* Reducimos el padding */
+      font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ddd;
       margin-top: 0.5rem;
-      color: #333; /* Color del texto en select */
+      color: #333;
     }
 
     select:focus {
-      border-color: #28a745; /* Color del borde cuando se selecciona */
+      border-color: #28a745;
     }
 
-    /* Estilo del botón */
+    /* Estilo del botón más compacto */
     .button {
       background-color: #28a745;
       color: #fff;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem; /* Reducimos el tamaño del botón */
+      font-size: 1rem;
       border-radius: 5px;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      margin-top: 2rem;
-      font-weight: bold; /* Botón en negrita */
+      margin-top: 1.5rem;
+      font-weight: bold;
     }
 
     .button:hover {
@@ -156,7 +149,7 @@
   <!-- Formulario con logo incluido -->
   <div class="form-container">
 
-    <!-- Logo arriba -->
+    <!-- Logo -->
     <div class="logo">
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
