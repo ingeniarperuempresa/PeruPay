@@ -14,68 +14,66 @@
     }
 
     body {
-      background-color: #f4f6f9;
-      color: #333;
+      background: linear-gradient(135deg, #004aad, #28a745); /* Fondo degradado */
+      color: #fff;
       line-height: 1.6;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      text-align: center;
+      font-size: 16px;
     }
 
-    /* Contenedor del formulario compacto */
+    /* Contenedor del formulario */
     .form-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #fff;
-      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+      padding: 2rem 3rem;
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 500px; /* Reducimos el ancho */
-      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 500px;
     }
 
-    /* Logo más pequeño */
+    /* Logo centrado */
     .logo {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
     .logo img {
-      width: 200px; /* Reducimos el tamaño del logo */
+      width: 250px; /* Logo grande */
       height: auto;
     }
 
-    /* Título más pequeño */
+    /* Título destacado */
     h2 {
       color: #004aad;
-      margin-bottom: 1rem;
-      font-size: 1.5rem; /* Reducimos el tamaño del título */
+      font-size: 2rem;
       font-weight: bold;
-      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
+    /* Formulario */
     .form-group {
-      margin-bottom: 1rem; /* Menos espacio entre los campos */
+      margin-bottom: 1.5rem;
       width: 100%;
     }
 
     label {
       display: block;
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #333;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       font-weight: bold;
     }
 
-    /* Barra de selección más pequeña */
     input[type="range"] {
       width: 100%;
-      height: 8px; /* Reducimos la altura de la barra */
+      height: 10px;
       background: #004aad;
       border-radius: 5px;
       outline: none;
+      transition: background 0.3s ease;
     }
 
     input[type="range"]:focus {
@@ -85,12 +83,12 @@
     input[type="range"]::-webkit-slider-runnable-track {
       background: #004aad;
       border-radius: 5px;
-      height: 8px;
+      height: 10px;
     }
 
     input[type="range"]::-webkit-slider-thumb {
-      width: 18px; /* Reducimos el tamaño del control deslizante */
-      height: 18px;
+      width: 20px;
+      height: 20px;
       background: #fff;
       border: 2px solid #004aad;
       border-radius: 50%;
@@ -100,42 +98,42 @@
     .range-labels {
       display: flex;
       justify-content: space-between;
-      margin-top: 0.3rem;
+      margin-top: 0.5rem;
     }
 
-    /* Estilo para el monto seleccionado */
     #monto-display {
-      font-size: 1.5rem; /* Reducimos el tamaño del monto */
+      font-size: 1.8rem;
       font-weight: bold;
       color: #004aad;
       margin-top: 0.5rem;
     }
 
-    /* Campos select más pequeños */
+    /* Campos select */
     select {
       width: 100%;
-      padding: 0.6rem; /* Reducimos el padding */
-      font-size: 1rem;
+      padding: 0.75rem;
+      font-size: 1.1rem;
       border-radius: 5px;
       border: 1px solid #ddd;
       margin-top: 0.5rem;
       color: #333;
+      background-color: #f8f8f8;
     }
 
     select:focus {
-      border-color: #28a745;
+      border-color: #004aad;
     }
 
-    /* Estilo del botón más compacto */
+    /* Estilo del botón */
     .button {
       background-color: #28a745;
       color: #fff;
-      padding: 0.8rem 1.5rem; /* Reducimos el tamaño del botón */
-      font-size: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
       border-radius: 5px;
       text-decoration: none;
       transition: background-color 0.3s ease;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       font-weight: bold;
     }
 
@@ -154,7 +152,7 @@
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
 
-    <!-- Título del formulario -->
+    <!-- Título -->
     <h2>Solicita tu préstamo</h2>
 
     <!-- Selector de monto -->
@@ -188,7 +186,7 @@
       </select>
     </div>
 
-    <!-- Botón de envío -->
+    <!-- Botón de solicitud -->
     <a href="#" class="button">Solicitar Préstamo</a>
 
   </div>
