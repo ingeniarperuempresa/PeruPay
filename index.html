@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perupay - Solicitar Préstamo</title>
   <style>
-    /* Estilos globales */
     * {
       margin: 0;
       padding: 0;
@@ -34,12 +33,9 @@
       margin: 1rem auto;
     }
 
-    .logo {
-      margin-bottom: 1rem;
-    }
-
     .logo img {
       width: 180px;
+      margin-bottom: 1rem;
     }
 
     h2 {
@@ -95,66 +91,35 @@
       cursor: pointer;
     }
 
-    #cuota-display {
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #004aad;
-    }
-
-    /* Modal (ventana emergente) */
-    .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 1; 
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%; 
-      background-color: rgba(0, 0, 0, 0.7);
-      overflow: auto;
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      background-color: #fff;
-      color: #333;
-      margin: 5% auto;
-      padding: 20px;
+    /* Estilos para las opciones Infocorp */
+    .infocorp-options {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
       border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      text-align: left;
     }
 
-    .modal h3 {
+    .infocorp-options h3 {
       color: #004aad;
+      margin-bottom: 1rem;
     }
 
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .button-modal {
-      background-color: #004aad;
+    .infocorp-options button {
+      background-color: #28a745;
       color: #fff;
-      padding: 0.8rem 1rem;
-      border-radius: 20px;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      display: inline-block;
       margin-top: 1rem;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
     }
 
     /* Media Queries */
@@ -176,11 +141,14 @@
 </head>
 <body>
 
+  <!-- Formulario de solicitud de préstamo -->
   <div class="form-container">
     <div class="logo">
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
     <h2>Solicita tu préstamo</h2>
+
+    <!-- Formulario de monto y cuotas -->
     <div class="form-group">
       <label for="monto">Monto del préstamo (S/):</label>
       <input type="range" id="monto" min="500" max="1000" step="50" value="500" oninput="updateCalculations()">
@@ -200,63 +168,50 @@
     <div class="form-group">
       <label for="frecuencia">Frecuencia de pago:</label>
       <select id="frecuencia" onchange="updateCalculations()">
-        <option value="normal">Semanal</option>
+        <option value="semanal">Semanal</option>
         <option value="quincenal" selected>Quincenal</option>
       </select>
     </div>
 
-    <p id="cuota-display">Cuota: S/0.00</p>
-    <button class="button" onclick="showModal()">Solicitar</button>
+    <p id="cuota-display">Tu cuota: S/500</p>
+    <button class="button" onclick="calculateCuota()">Solicitar Préstamo</button>
   </div>
 
-  <!-- Modal (Ventana emergente) -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h3>Recargar S/10 y descarga nuestra app</h3>
-      <p>Para obtener tu primer crédito, sigue estos pasos:</p>
-      <ol style="text-align: left;">
-        <li>Descarga nuestra aplicación desde el enlace a continuación.</li>
-        <li>Recarga S/10 en tu cuenta dentro de la app.</li>
-        <li>Deja el saldo por un período de 5 días sin retirarlo.</li>
-        <li>Accede a tu crédito inicial de S/100, que irá incrementando según tu historial.</li>
-      </ol>
-      <a href="tu-apk-link.apk" download class="button-modal">Descargar APK</a>
-    </div>
+  <!-- Opciones para personas con Infocorp -->
+  <div class="infocorp-options">
+    <h3>¿Estás en Infocorp?</h3>
+    <p>Te ofrecemos las siguientes soluciones:</p>
+    <button onclick="location.href='https://www.perupay.com/descargar-apk'">Descargar nuestra App y Recargar S/10</button>
+    <button onclick="location.href='https://www.perupay.com/prestamo-base'">Préstamo Base de S/50</button>
+    <button onclick="location.href='https://www.perupay.com/negociador-de-deudas'">Negociador de Deudas</button>
   </div>
 
   <script>
+    // Función para actualizar el monto y la cuota
     function updateCalculations() {
-      const monto = parseFloat(document.getElementById("monto").value);
-      const cuotas = parseInt(document.getElementById("cuotas").value);
-      const frecuencia = document.getElementById("frecuencia").value;
+      let monto = document.getElementById("monto").value;
+      let cuotas = document.getElementById("cuotas").value;
+      let frecuencia = document.getElementById("frecuencia").value;
 
-      let interes = 0.10;
+      let tasa = 0.10; // 10% por defecto
 
+      // Si la frecuencia es quincenal, se suma 2% a la tasa
       if (frecuencia === "quincenal") {
-        interes += 0.02;
+        tasa = 0.12; // 12%
       }
 
-      const montoTotal = monto * (1 + interes);
-      const cuota = montoTotal / cuotas;
+      // Calcular la cuota
+      let cuota = monto / cuotas;
+      cuota += cuota * tasa;
 
-      document.getElementById("monto-display").innerText = `Monto seleccionado: S/${monto.toFixed(2)}`;
-      document.getElementById("cuota-display").innerText = `Cuota: S/${cuota.toFixed(2)}`;
+      // Actualizar el monto y la cuota
+      document.getElementById("monto-display").innerText = `Monto seleccionado: S/ ${monto}`;
+      document.getElementById("cuota-display").innerText = `Tu cuota: S/ ${cuota.toFixed(2)}`;
     }
 
-    function showModal() {
-      document.getElementById("myModal").style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-
-    // Close modal if the user clicks outside of it
-    window.onclick = function(event) {
-      if (event.target == document.getElementById("myModal")) {
-        closeModal();
-      }
+    // Función para mostrar la cuota calculada
+    function calculateCuota() {
+      alert("Tu cuota ha sido calculada correctamente.");
     }
   </script>
 
