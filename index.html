@@ -53,6 +53,7 @@
       color: #004aad;
       margin-bottom: 1rem; /* Espacio entre el título y los campos */
       font-size: 2rem;
+      font-weight: bold; /* Título en negrita */
       text-align: center;
     }
 
@@ -64,8 +65,9 @@
     label {
       display: block;
       font-size: 1.2rem;
-      color: #555;
+      color: #333;
       margin-bottom: 0.5rem;
+      font-weight: bold; /* Etiquetas en negrita */
     }
 
     /* Barra de selección con color vibrante */
@@ -116,15 +118,22 @@
       margin-top: 1rem;
     }
 
-    select, input[type="range"] {
+    /* Campos select con color de fondo */
+    select {
       width: 100%;
       padding: 0.75rem;
       font-size: 1.1rem;
       border-radius: 5px;
       border: 1px solid #ddd;
       margin-top: 0.5rem;
+      color: #333; /* Color del texto en select */
     }
 
+    select:focus {
+      border-color: #28a745; /* Color del borde cuando se selecciona */
+    }
+
+    /* Estilo del botón */
     .button {
       background-color: #28a745;
       color: #fff;
@@ -134,6 +143,7 @@
       text-decoration: none;
       transition: background-color 0.3s ease;
       margin-top: 2rem;
+      font-weight: bold; /* Botón en negrita */
     }
 
     .button:hover {
@@ -200,4 +210,3 @@
 
 </body>
 </html>
-
