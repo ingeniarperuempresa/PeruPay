@@ -32,8 +32,8 @@
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       width: 90%;
-      max-width: 380px; /* Ajuste de tamaño más grande pero moderado */
-      min-height: 420px; /* Ajuste para que el formulario no se vea cortado */
+      max-width: 380px;
+      min-height: 420px;
     }
 
     /* Logo centrado */
@@ -42,7 +42,7 @@
     }
 
     .logo img {
-      width: 180px; /* Logo un poco más grande */
+      width: 180px;
       height: auto;
     }
 
@@ -54,7 +54,7 @@
       margin-bottom: 1rem;
     }
 
-    /* Formulario más pequeño */
+    /* Formulario */
     .form-group {
       margin-bottom: 1.2rem;
       width: 100%;
@@ -70,20 +70,10 @@
 
     input[type="range"] {
       width: 100%;
-      height: 8px; /* Un poco más grande para que se vea mejor */
+      height: 8px;
       background: #004aad;
       border-radius: 5px;
       outline: none;
-    }
-
-    input[type="range"]:focus {
-      background: #28a745;
-    }
-
-    input[type="range"]::-webkit-slider-runnable-track {
-      background: #004aad;
-      border-radius: 5px;
-      height: 8px;
     }
 
     input[type="range"]::-webkit-slider-thumb {
@@ -99,7 +89,7 @@
       display: flex;
       justify-content: space-between;
       margin-top: 0.3rem;
-      font-size: 1rem; /* Hacemos los números más visibles */
+      font-size: 1rem;
       color: #004aad;
     }
 
@@ -110,7 +100,7 @@
       margin-top: 0.6rem;
     }
 
-    /* Campos select más pequeños */
+    /* Campos select */
     select {
       width: 100%;
       padding: 0.8rem;
@@ -136,13 +126,14 @@
       transition: background-color 0.3s ease;
       margin-top: 1rem;
       font-weight: bold;
+      display: inline-block;
     }
 
     .button:hover {
       background-color: #218838;
     }
 
-    /* Aseguramos que la página sea completamente responsiva */
+    /* Responsivo */
     @media (max-width: 400px) {
       .form-container {
         max-width: 100%;
@@ -156,20 +147,12 @@
       h2 {
         font-size: 1.4rem;
       }
-
-      input[type="range"] {
-        height: 6px;
-      }
-
-      .button {
-        padding: 0.6rem 1.2rem;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Formulario con logo incluido -->
+  <!-- Contenedor del formulario -->
   <div class="form-container">
 
     <!-- Logo -->
@@ -191,18 +174,18 @@
       <p id="monto-display">Monto seleccionado: S/500</p>
     </div>
 
-    <!-- Selector de número de cuotas -->
+    <!-- Selector de cuotas -->
     <div class="form-group">
       <label for="cuotas">Número de cuotas:</label>
       <select id="cuotas" name="cuotas">
+        <option value="1">1 cuota</option>
+        <option value="2">2 cuotas</option>
         <option value="3">3 cuotas</option>
-        <option value="6">6 cuotas</option>
-        <option value="9">9 cuotas</option>
-        <option value="12">12 cuotas</option>
+        <option value="4">4 cuotas</option>
       </select>
     </div>
 
-    <!-- Selector de frecuencia de pago -->
+    <!-- Selector de frecuencia -->
     <div class="form-group">
       <label for="frecuencia">Frecuencia de pago:</label>
       <select id="frecuencia" name="frecuencia">
@@ -217,7 +200,7 @@
   </div>
 
   <script>
-    // Función para actualizar el monto seleccionado
+    // Actualizar el monto seleccionado dinámicamente
     function updateMonto() {
       var monto = document.getElementById("monto").value;
       document.getElementById("monto-display").innerText = "Monto seleccionado: S/" + monto;
@@ -226,4 +209,5 @@
 
 </body>
 </html>
+
 
