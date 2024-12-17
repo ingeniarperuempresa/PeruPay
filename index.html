@@ -19,52 +19,47 @@
       line-height: 1.6;
     }
 
-    /* Sección principal con logo */
+    /* Sección principal (bienvenida + imagen) */
     .hero {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      height: 80vh;
+      gap: 2rem;
+      padding: 3rem;
       background-color: #fff;
-      border-bottom: 2px solid #e9ecef;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .hero img {
-      width: 150px; /* Ajusta el tamaño del logo */
-      margin-bottom: 1rem;
+    .hero-text {
+      flex: 1;
+      text-align: left;
     }
 
-    .hero h1 {
-      font-size: 2rem;
+    .hero-text h1 {
+      font-size: 2.5rem;
       color: #004aad;
       margin-bottom: 1rem;
     }
 
-    .hero p {
+    .hero-text p {
       font-size: 1.1rem;
       color: #555;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
+      line-height: 1.8;
     }
 
-    .hero .image-gallery {
+    .hero-image {
+      flex: 1;
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
     }
 
-    .hero .image-gallery img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
     }
 
-    /* Contenedor principal */
+    /* Contenedor de información adicional */
     .container {
       max-width: 800px;
       margin: 2rem auto;
@@ -86,6 +81,7 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Botones */
     .button {
       display: inline-block;
       background-color: #28a745;
@@ -119,21 +115,18 @@
   </style>
 </head>
 <body>
-  <!-- Sección principal con logo -->
+  <!-- Sección principal con texto e imagen -->
   <div class="hero">
-    <img src="Perupaylogo.png" alt="Perupay Logo">
-    <h1>Bienvenido a Perupay</h1>
-    <p>La mejor solución de préstamos rápidos y seguros. Desembolsamos hasta 1000 soles en menos de 1 hora.</p>
-    
-    <!-- Galería de imágenes -->
-    <div class="image-gallery">
-      <img src="imagen1.jpg" alt="Imagen 1">
-      <img src="imagen2.jpg" alt="Imagen 2">
-      <img src="imagen3.jpg" alt="Imagen 3">
+    <div class="hero-text">
+      <h1>Bienvenido a Perupay</h1>
+      <p>La mejor solución de préstamos rápidos y seguros. Ofrecemos desembolsos garantizados en menos de 1 hora y montos de hasta 1000 soles. Tu mejor opción financiera, ¡sin complicaciones!</p>
+    </div>
+    <div class="hero-image">
+      <img src="https://cdn.leonardo.ai/users/72dd46c9-d613-459c-802f-6971422727ea/generations/b155f23f-f4c2-4ffc-bcf2-e977e87993a9/Leonardo_Phoenix_A_vibrant_and_modern_illustration_of_a_divers_0.jpg" alt="Imagen ilustrativa">
     </div>
   </div>
 
-  <!-- Contenedor con información adicional -->
+  <!-- Sección de información adicional -->
   <div class="container">
     <h2>Préstamos al 10% de interés</h2>
     <p>Desde <strong>500 soles</strong> hasta <strong>1000 soles</strong>, con un desembolso garantizado en menos de una hora.</p>
