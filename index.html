@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fintech - Préstamos Rápidos</title>
+  <title>Perupay - Préstamos Rápidos</title>
   <style>
     /* Estilos globales */
     * {
@@ -19,25 +19,37 @@
       line-height: 1.6;
     }
 
+    /* Encabezado */
     header {
       background-color: #004aad;
       color: #fff;
-      text-align: center;
-      padding: 1rem 0;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+    header img {
+      height: 50px;
     }
 
-    header p {
-      font-size: 1.2rem;
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
     }
 
+    header nav a:hover {
+      color: #00d9ff;
+    }
+
+    /* Contenedor principal */
     .container {
       max-width: 800px;
-      margin: 2rem auto;
+      margin: 3rem auto;
       padding: 2rem;
       background-color: #fff;
       border-radius: 8px;
@@ -45,9 +57,7 @@
       text-align: center;
     }
 
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    h1, h2 {
       color: #004aad;
     }
 
@@ -57,6 +67,7 @@
       color: #555;
     }
 
+    /* Botones */
     .button {
       display: inline-block;
       background-color: #28a745;
@@ -72,25 +83,7 @@
       background-color: #218838;
     }
 
-    .secondary-section {
-      margin-top: 3rem;
-      background-color: #e9ecef;
-      padding: 2rem;
-      border-radius: 8px;
-    }
-
-    .secondary-section h3 {
-      font-size: 1.5rem;
-      color: #004aad;
-    }
-
-    .secondary-section p {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .button-secondary {
+    .secondary-button {
       display: inline-block;
       background-color: #007bff;
       color: #fff;
@@ -98,33 +91,64 @@
       text-decoration: none;
       font-size: 1.1rem;
       border-radius: 5px;
+      margin-top: 1rem;
       transition: background-color 0.3s ease;
     }
 
-    .button-secondary:hover {
+    .secondary-button:hover {
       background-color: #0056b3;
+    }
+
+    /* Sección secundaria */
+    .secondary-section {
+      margin-top: 3rem;
+      background-color: #e9ecef;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* Pie de página */
+    footer {
+      background-color: #004aad;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <!-- Encabezado principal -->
+  <!-- Encabezado con logo -->
   <header>
-    <h1>Préstamos Rápidos y Seguros</h1>
-    <p>Obtén hasta 1000 soles con desembolso en 1 hora</p>
+    <div>
+      <img src="Perupaylogo.png" alt="Perupay Logo">
+    </div>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Préstamos</a>
+      <a href="#">Soluciones</a>
+      <a href="#">Contacto</a>
+    </nav>
   </header>
 
   <!-- Contenedor principal -->
   <div class="container">
-    <h2>Préstamos al 10% de interés</h2>
-    <p>Desde <strong>500 soles</strong> hasta <strong>1000 soles</strong>, con un desembolso garantizado en menos de una hora.</p>
+    <h1>Bienvenido a Perupay</h1>
+    <p>Ofrecemos préstamos al <strong>10% de interés</strong> con desembolso garantizado en menos de 1 hora. Solicita montos entre <strong>500</strong> y <strong>1000 soles</strong> de manera rápida y segura.</p>
     <a href="#" class="button">Pedir Préstamo</a>
   </div>
 
   <!-- Sección secundaria -->
   <div class="container secondary-section">
-    <h3>¿Estás en Infocorp?</h3>
-    <p>Revisa nuestras soluciones de crédito adaptadas a tus necesidades.</p>
-    <a href="#" class="button-secondary">Ver Soluciones</a>
+    <h2>¿Estás en Infocorp?</h2>
+    <p>¡No te preocupes! Tenemos soluciones de crédito adaptadas a tu situación financiera.</p>
+    <a href="#" class="secondary-button">Ver Soluciones</a>
   </div>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2024 Perupay. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
