@@ -19,37 +19,55 @@
       line-height: 1.6;
     }
 
-    /* Encabezado */
-    header {
-      background-color: #004aad;
-      color: #fff;
-      padding: 1rem 2rem;
+    /* Sección principal con logo */
+    .hero {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      text-align: center;
+      height: 80vh;
+      background-color: #fff;
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    .hero img {
+      width: 150px; /* Ajusta el tamaño del logo */
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      color: #004aad;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero .image-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .hero .image-gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    header nav a:hover {
-      color: #00d9ff;
     }
 
     /* Contenedor principal */
     .container {
       max-width: 800px;
-      margin: 3rem auto;
+      margin: 2rem auto;
       padding: 2rem;
       background-color: #fff;
       border-radius: 8px;
@@ -57,17 +75,17 @@
       text-align: center;
     }
 
-    h1, h2 {
+    h2 {
       color: #004aad;
+      margin-bottom: 1rem;
     }
 
     p {
       font-size: 1.1rem;
-      margin-bottom: 1.5rem;
       color: #555;
+      margin-bottom: 1.5rem;
     }
 
-    /* Botones */
     .button {
       display: inline-block;
       background-color: #28a745;
@@ -98,57 +116,35 @@
     .secondary-button:hover {
       background-color: #0056b3;
     }
-
-    /* Sección secundaria */
-    .secondary-section {
-      margin-top: 3rem;
-      background-color: #e9ecef;
-      padding: 2rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    /* Pie de página */
-    footer {
-      background-color: #004aad;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 3rem;
-    }
   </style>
 </head>
 <body>
-  <!-- Encabezado con logo -->
-  <header>
-    <div>
-      <img src="Perupaylogo.png" alt="Perupay Logo">
-    </div>
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Préstamos</a>
-      <a href="#">Soluciones</a>
-      <a href="#">Contacto</a>
-    </nav>
-  </header>
-
-  <!-- Contenedor principal -->
-  <div class="container">
+  <!-- Sección principal con logo -->
+  <div class="hero">
+    <img src="Perupaylogo.png" alt="Perupay Logo">
     <h1>Bienvenido a Perupay</h1>
-    <p>Ofrecemos préstamos al <strong>10% de interés</strong> con desembolso garantizado en menos de 1 hora. Solicita montos entre <strong>500</strong> y <strong>1000 soles</strong> de manera rápida y segura.</p>
+    <p>La mejor solución de préstamos rápidos y seguros. Desembolsamos hasta 1000 soles en menos de 1 hora.</p>
+    
+    <!-- Galería de imágenes -->
+    <div class="image-gallery">
+      <img src="imagen1.jpg" alt="Imagen 1">
+      <img src="imagen2.jpg" alt="Imagen 2">
+      <img src="imagen3.jpg" alt="Imagen 3">
+    </div>
+  </div>
+
+  <!-- Contenedor con información adicional -->
+  <div class="container">
+    <h2>Préstamos al 10% de interés</h2>
+    <p>Desde <strong>500 soles</strong> hasta <strong>1000 soles</strong>, con un desembolso garantizado en menos de una hora.</p>
     <a href="#" class="button">Pedir Préstamo</a>
   </div>
 
   <!-- Sección secundaria -->
-  <div class="container secondary-section">
+  <div class="container">
     <h2>¿Estás en Infocorp?</h2>
-    <p>¡No te preocupes! Tenemos soluciones de crédito adaptadas a tu situación financiera.</p>
+    <p>¡No te preocupes! Tenemos soluciones de crédito adaptadas a tus necesidades.</p>
     <a href="#" class="secondary-button">Ver Soluciones</a>
   </div>
-
-  <!-- Pie de página -->
-  <footer>
-    <p>&copy; 2024 Perupay. Todos los derechos reservados.</p>
-  </footer>
 </body>
 </html>
