@@ -14,7 +14,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #004aad, #28a745); /* Fondo degradado */
+      background: linear-gradient(135deg, #004aad, #28a745);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -24,9 +24,8 @@
       text-align: center;
     }
 
-    /* Contenedor del formulario compacto */
     .form-container {
-      background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 1.5rem 2rem;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -87,7 +86,7 @@
       color: #fff;
       padding: 0.8rem;
       font-size: 1.1rem;
-      border-radius: 20px; /* Bordes redondeados */
+      border-radius: 20px;
       text-decoration: none;
       font-weight: bold;
       margin-top: 1rem;
@@ -103,7 +102,6 @@
       color: #004aad;
     }
 
-    /* Sección adicional */
     .info-container {
       margin-top: 1.5rem;
       background-color: rgba(255, 255, 255, 0.85);
@@ -132,7 +130,40 @@
       font-weight: bold;
     }
 
-    /* Media Queries para dispositivos más grandes */
+    .infocorp-options {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    .infocorp-options h3 {
+      color: #004aad;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .option {
+      margin-bottom: 1rem;
+    }
+
+    .option h4 {
+      color: #28a745;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .option p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    /* Media Queries */
     @media (min-width: 768px) {
       body {
         flex-direction: row;
@@ -147,7 +178,7 @@
         margin: 2rem;
       }
 
-      .info-container {
+      .infocorp-options {
         width: 400px;
         max-width: 450px;
         margin: 2rem;
@@ -174,7 +205,7 @@
         <option value="1">1 cuota</option>
         <option value="2">2 cuotas</option>
         <option value="3">3 cuotas</option>
-        <option value="4" selected>4 cuotas</option> <!-- Predeterminado -->
+        <option value="4" selected>4 cuotas</option>
       </select>
     </div>
 
@@ -182,47 +213,49 @@
       <label for="frecuencia">Frecuencia de pago:</label>
       <select id="frecuencia" onchange="updateCalculations()">
         <option value="normal">Semanal</option>
-        <option value="quincenal" selected>Quincenal</option> <!-- Predeterminado -->
+        <option value="quincenal" selected>Quincenal</option>
       </select>
     </div>
 
     <p id="cuota-display">Cuota: S/0.00</p>
-
     <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
-  <div class="info-container">
-    <h3>¿Estás en Infocorp?</h3>
-    <p>No te preocupes, tenemos opciones para ayudarte a recibir tu crédito. <br> Descubre nuestras <a href="#">soluciones de crédito</a>.</p>
+  <div class="infocorp-options">
+    <h3>Opciones para personas en Infocorp</h3>
+    <div class="option">
+      <h4>Opción 1: Recargar S/10</h4>
+      <p>Descarga nuestra app, recarga S/10 y déjalos durante 5 días. Luego, podrás obtener un crédito inicial de S/100 que irá aumentando.</p>
+    </div>
+    <div class="option">
+      <h4>Opción 2: Préstamo base</h4>
+      <p>Recibe un préstamo base de S/50. Al pagarlo puntualmente, aumentará tu línea de crédito.</p>
+    </div>
+    <div class="option">
+      <h4>Opción 3: Negociador de deudas</h4>
+      <p>Negociamos tu deuda para reducirla. Una vez saldada, puedes acceder automáticamente a nuevos créditos con nosotros.</p>
+    </div>
   </div>
 
   <script>
     function updateCalculations() {
-      // Obtener valores del formulario
       const monto = parseFloat(document.getElementById("monto").value);
       const cuotas = parseInt(document.getElementById("cuotas").value);
       const frecuencia = document.getElementById("frecuencia").value;
 
-      // Calcular interés base (10%)
       let interes = 0.10;
 
-      // Incremento por frecuencia quincenal (+2%)
       if (frecuencia === "quincenal") {
         interes += 0.02;
       }
 
-      // Calcular monto total
       const montoTotal = monto * (1 + interes);
-
-      // Calcular cuota
       const cuota = montoTotal / cuotas;
 
-      // Actualizar valores en la pantalla
       document.getElementById("monto-display").innerText = `Monto seleccionado: S/${monto.toFixed(2)}`;
       document.getElementById("cuota-display").innerText = `Cuota: S/${cuota.toFixed(2)}`;
     }
 
-    // Inicializar cálculos con valores predeterminados
     updateCalculations();
   </script>
 
