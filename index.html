@@ -17,23 +17,29 @@
       background-color: #f4f6f9;
       color: #333;
       line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Hace que el cuerpo ocupe toda la altura */
     }
 
-    /* Contenedor principal */
-    .main-container {
+    /* Contenedor del formulario */
+    .form-container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Toma toda la altura de la pantalla */
       background-color: #fff;
-      padding: 0; /* Eliminamos márgenes y padding extra */
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
     }
 
-    /* Logo centrado */
+    /* Logo dentro del formulario */
     .logo {
-      text-align: center;
-      padding: 2rem 0;
+      margin-bottom: 2rem;
     }
 
     .logo img {
@@ -41,26 +47,17 @@
       height: auto;
     }
 
-    /* Sección del formulario de préstamos */
-    .form-container {
-      max-width: 700px; /* Formulario más amplio */
-      width: 100%;
-      background-color: #fff;
-      padding: 3rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      margin-top: 2rem;
-    }
-
+    /* Título del formulario */
     h2 {
       color: #004aad;
       margin-bottom: 1.5rem;
-      font-size: 2rem; /* Ajuste de tamaño para mayor legibilidad */
+      font-size: 2rem;
+      text-align: center;
     }
 
     .form-group {
       margin-bottom: 1.5rem;
+      width: 100%;
     }
 
     label {
@@ -103,52 +100,50 @@
 </head>
 <body>
 
-  <!-- Contenedor principal -->
-  <div class="main-container">
+  <!-- Formulario con logo incluido -->
+  <div class="form-container">
 
-    <!-- Sección del logo -->
+    <!-- Logo dentro del formulario -->
     <div class="logo">
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
 
-    <!-- Formulario de préstamo -->
-    <div class="form-container">
-      <h2>Solicita tu préstamo</h2>
+    <!-- Título del formulario -->
+    <h2>Solicita tu préstamo</h2>
 
-      <!-- Selector de monto -->
-      <div class="form-group">
-        <label for="monto">Monto del préstamo (S/):</label>
-        <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
-        <div class="range-labels">
-          <span>S/500</span>
-          <span>S/1000</span>
-        </div>
-        <p id="monto-display">Monto seleccionado: S/500</p>
+    <!-- Selector de monto -->
+    <div class="form-group">
+      <label for="monto">Monto del préstamo (S/):</label>
+      <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
+      <div class="range-labels">
+        <span>S/500</span>
+        <span>S/1000</span>
       </div>
-
-      <!-- Selector de número de cuotas -->
-      <div class="form-group">
-        <label for="cuotas">Número de cuotas:</label>
-        <select id="cuotas" name="cuotas">
-          <option value="3">3 cuotas</option>
-          <option value="6">6 cuotas</option>
-          <option value="9">9 cuotas</option>
-          <option value="12">12 cuotas</option>
-        </select>
-      </div>
-
-      <!-- Selector de frecuencia de pago -->
-      <div class="form-group">
-        <label for="frecuencia">Frecuencia de pago:</label>
-        <select id="frecuencia" name="frecuencia">
-          <option value="semanal">Semanal</option>
-          <option value="quincenal">Quincenal</option>
-        </select>
-      </div>
-
-      <!-- Botón de envío -->
-      <a href="#" class="button">Solicitar Préstamo</a>
+      <p id="monto-display">Monto seleccionado: S/500</p>
     </div>
+
+    <!-- Selector de número de cuotas -->
+    <div class="form-group">
+      <label for="cuotas">Número de cuotas:</label>
+      <select id="cuotas" name="cuotas">
+        <option value="3">3 cuotas</option>
+        <option value="6">6 cuotas</option>
+        <option value="9">9 cuotas</option>
+        <option value="12">12 cuotas</option>
+      </select>
+    </div>
+
+    <!-- Selector de frecuencia de pago -->
+    <div class="form-group">
+      <label for="frecuencia">Frecuencia de pago:</label>
+      <select id="frecuencia" name="frecuencia">
+        <option value="semanal">Semanal</option>
+        <option value="quincenal">Quincenal</option>
+      </select>
+    </div>
+
+    <!-- Botón de envío -->
+    <a href="#" class="button">Solicitar Préstamo</a>
 
   </div>
 
@@ -162,5 +157,4 @@
 
 </body>
 </html>
-
 
