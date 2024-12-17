@@ -19,22 +19,32 @@
       line-height: 1.6;
     }
 
-    /* Sección del logo */
+    /* Contenedor principal sin espacio blanco extra */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* Asegura que el contenido ocupe toda la altura */
+      background-color: #fff;
+      padding: 0; /* Eliminamos cualquier margen o padding extra */
+    }
+
+    /* Logo centrado */
     .logo {
       text-align: center;
       padding: 2rem 0;
-      background-color: #fff;
     }
 
     .logo img {
-      width: 250px; /* Ajusta el tamaño del logo */
+      width: 250px; /* Tamaño del logo */
       height: auto;
     }
 
     /* Sección del formulario de préstamos */
     .form-container {
       max-width: 600px;
-      margin: 0 auto;
+      margin-top: 2rem; /* Separación del logo */
       background-color: #fff;
       padding: 2rem;
       border-radius: 10px;
@@ -91,48 +101,53 @@
 </head>
 <body>
 
-  <!-- Sección del logo -->
-  <div class="logo">
-    <img src="Perupaylogo.png" alt="Logo Perupay">
-  </div>
+  <!-- Contenedor principal -->
+  <div class="main-container">
 
-  <!-- Formulario de préstamo -->
-  <div class="form-container">
-    <h2>Solicita tu préstamo</h2>
+    <!-- Sección del logo -->
+    <div class="logo">
+      <img src="Perupaylogo.png" alt="Logo Perupay">
+    </div>
 
-    <!-- Selector de monto -->
-    <div class="form-group">
-      <label for="monto">Monto del préstamo (S/):</label>
-      <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
-      <div class="range-labels">
-        <span>S/500</span>
-        <span>S/1000</span>
+    <!-- Formulario de préstamo -->
+    <div class="form-container">
+      <h2>Solicita tu préstamo</h2>
+
+      <!-- Selector de monto -->
+      <div class="form-group">
+        <label for="monto">Monto del préstamo (S/):</label>
+        <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
+        <div class="range-labels">
+          <span>S/500</span>
+          <span>S/1000</span>
+        </div>
+        <p id="monto-display">Monto seleccionado: S/500</p>
       </div>
-      <p id="monto-display">Monto seleccionado: S/500</p>
+
+      <!-- Selector de número de cuotas -->
+      <div class="form-group">
+        <label for="cuotas">Número de cuotas:</label>
+        <select id="cuotas" name="cuotas">
+          <option value="3">3 cuotas</option>
+          <option value="6">6 cuotas</option>
+          <option value="9">9 cuotas</option>
+          <option value="12">12 cuotas</option>
+        </select>
+      </div>
+
+      <!-- Selector de frecuencia de pago -->
+      <div class="form-group">
+        <label for="frecuencia">Frecuencia de pago:</label>
+        <select id="frecuencia" name="frecuencia">
+          <option value="semanal">Semanal</option>
+          <option value="quincenal">Quincenal</option>
+        </select>
+      </div>
+
+      <!-- Botón de envío -->
+      <a href="#" class="button">Solicitar Préstamo</a>
     </div>
 
-    <!-- Selector de número de cuotas -->
-    <div class="form-group">
-      <label for="cuotas">Número de cuotas:</label>
-      <select id="cuotas" name="cuotas">
-        <option value="3">3 cuotas</option>
-        <option value="6">6 cuotas</option>
-        <option value="9">9 cuotas</option>
-        <option value="12">12 cuotas</option>
-      </select>
-    </div>
-
-    <!-- Selector de frecuencia de pago -->
-    <div class="form-group">
-      <label for="frecuencia">Frecuencia de pago:</label>
-      <select id="frecuencia" name="frecuencia">
-        <option value="semanal">Semanal</option>
-        <option value="quincenal">Quincenal</option>
-      </select>
-    </div>
-
-    <!-- Botón de envío -->
-    <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
   <script>
@@ -145,3 +160,4 @@
 
 </body>
 </html>
+
