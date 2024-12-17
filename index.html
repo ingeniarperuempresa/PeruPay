@@ -19,13 +19,25 @@
       line-height: 1.6;
     }
 
+    /* Sección del logo */
+    .logo {
+      text-align: center;
+      padding: 1.5rem 0;
+      background-color: #fff;
+    }
+
+    .logo img {
+      width: 120px; /* Ajusta el tamaño del logo */
+      height: auto;
+    }
+
     /* Sección principal (bienvenida + imagen) */
     .hero {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
-      padding: 3rem;
+      padding: 2rem;
       background-color: #fff;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -112,9 +124,26 @@
     .secondary-button:hover {
       background-color: #0056b3;
     }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text {
+        margin-bottom: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Sección del logo -->
+  <div class="logo">
+    <img src="Perupaylogo.png" alt="Logo Perupay">
+  </div>
+
   <!-- Sección principal con texto e imagen -->
   <div class="hero">
     <div class="hero-text">
