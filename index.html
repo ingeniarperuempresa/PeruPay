@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perupay - Préstamos Rápidos</title>
+  <title>Perupay - Cálculo de Cuotas</title>
   <style>
     /* Estilos globales */
     * {
@@ -16,13 +16,11 @@
     body {
       background: linear-gradient(135deg, #004aad, #28a745); /* Fondo degradado */
       color: #fff;
-      line-height: 1.6;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      font-size: 16px;
     }
 
     /* Contenedor del formulario compacto */
@@ -32,65 +30,37 @@
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       width: 90%;
-      max-width: 380px;
-      min-height: 420px;
+      max-width: 400px;
     }
 
-    /* Logo centrado */
     .logo {
       margin-bottom: 1rem;
     }
 
     .logo img {
       width: 180px;
-      height: auto;
     }
 
-    /* Título */
     h2 {
       color: #004aad;
       font-size: 1.6rem;
-      font-weight: bold;
       margin-bottom: 1rem;
     }
 
-    /* Formulario */
     .form-group {
       margin-bottom: 1.2rem;
-      width: 100%;
+      text-align: left;
     }
 
     label {
       display: block;
-      font-size: 1rem;
-      color: #333;
-      margin-bottom: 0.5rem;
       font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #004aad;
     }
 
     input[type="range"] {
       width: 100%;
-      height: 8px;
-      background: #004aad;
-      border-radius: 5px;
-      outline: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      width: 20px;
-      height: 20px;
-      background: #fff;
-      border: 2px solid #004aad;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .range-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.3rem;
-      font-size: 1rem;
-      color: #004aad;
     }
 
     #monto-display {
@@ -98,9 +68,9 @@
       font-weight: bold;
       color: #004aad;
       margin-top: 0.6rem;
+      text-align: center;
     }
 
-    /* Campos select */
     select {
       width: 100%;
       padding: 0.8rem;
@@ -108,76 +78,44 @@
       border-radius: 5px;
       border: 1px solid #ddd;
       margin-top: 0.5rem;
-      color: #333;
     }
 
-    select:focus {
-      border-color: #004aad;
-    }
-
-    /* Estilo del botón */
     .button {
       background-color: #28a745;
       color: #fff;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem;
       font-size: 1.1rem;
       border-radius: 5px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
-      margin-top: 1rem;
       font-weight: bold;
+      margin-top: 1rem;
       display: inline-block;
     }
 
-    .button:hover {
-      background-color: #218838;
-    }
-
-    /* Responsivo */
-    @media (max-width: 400px) {
-      .form-container {
-        max-width: 100%;
-        padding: 1rem;
-      }
-
-      .logo img {
-        width: 150px;
-      }
-
-      h2 {
-        font-size: 1.4rem;
-      }
+    #cuota-display {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #004aad;
     }
   </style>
 </head>
 <body>
 
-  <!-- Contenedor del formulario -->
   <div class="form-container">
-
-    <!-- Logo -->
     <div class="logo">
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
-
-    <!-- Título -->
     <h2>Solicita tu préstamo</h2>
-
-    <!-- Selector de monto -->
     <div class="form-group">
       <label for="monto">Monto del préstamo (S/):</label>
-      <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
-      <div class="range-labels">
-        <span>S/500</span>
-        <span>S/1000</span>
-      </div>
+      <input type="range" id="monto" min="500" max="1000" step="50" value="500" oninput="updateCalculations()">
       <p id="monto-display">Monto seleccionado: S/500</p>
     </div>
 
-    <!-- Selector de cuotas -->
     <div class="form-group">
       <label for="cuotas">Número de cuotas:</label>
-      <select id="cuotas" name="cuotas">
+      <select id="cuotas" onchange="updateCalculations()">
         <option value="1">1 cuota</option>
         <option value="2">2 cuotas</option>
         <option value="3">3 cuotas</option>
@@ -185,29 +123,47 @@
       </select>
     </div>
 
-    <!-- Selector de frecuencia -->
     <div class="form-group">
       <label for="frecuencia">Frecuencia de pago:</label>
-      <select id="frecuencia" name="frecuencia">
-        <option value="semanal">Semanal</option>
+      <select id="frecuencia" onchange="updateCalculations()">
+        <option value="normal">Semanal</option>
         <option value="quincenal">Quincenal</option>
       </select>
     </div>
 
-    <!-- Botón de solicitud -->
-    <a href="#" class="button">Solicitar Préstamo</a>
+    <p id="cuota-display">Cuota: S/0.00</p>
 
+    <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
   <script>
-    // Actualizar el monto seleccionado dinámicamente
-    function updateMonto() {
-      var monto = document.getElementById("monto").value;
-      document.getElementById("monto-display").innerText = "Monto seleccionado: S/" + monto;
+    function updateCalculations() {
+      // Obtener valores del formulario
+      const monto = parseFloat(document.getElementById("monto").value);
+      const cuotas = parseInt(document.getElementById("cuotas").value);
+      const frecuencia = document.getElementById("frecuencia").value;
+
+      // Calcular interés
+      let interes = cuotas <= 2 ? 0.10 : 0.15; // 10% si <= 2 cuotas, 15% si > 2 cuotas
+      if (frecuencia === "quincenal") {
+        interes += 0.02; // +2% si es quincenal
+      }
+
+      // Calcular monto total
+      const montoTotal = monto * (1 + interes);
+
+      // Calcular cuota
+      const cuota = montoTotal / cuotas;
+
+      // Actualizar valores en la pantalla
+      document.getElementById("monto-display").innerText = `Monto seleccionado: S/${monto.toFixed(2)}`;
+      document.getElementById("cuota-display").innerText = `Cuota: S/${cuota.toFixed(2)}`;
     }
+
+    // Inicializar cálculos
+    updateCalculations();
   </script>
 
 </body>
 </html>
-
 
