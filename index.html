@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perupay - Solicitar Préstamo</title>
+  <title>Perupay - Cálculo de Cuotas</title>
   <style>
+    /* Estilos globales */
     * {
       margin: 0;
       padding: 0;
@@ -33,9 +34,12 @@
       margin: 1rem auto;
     }
 
+    .logo {
+      margin-bottom: 1rem;
+    }
+
     .logo img {
       width: 180px;
-      margin-bottom: 1rem;
     }
 
     h2 {
@@ -91,11 +95,45 @@
       cursor: pointer;
     }
 
-    /* Estilos para las opciones Infocorp */
+    #cuota-display {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #004aad;
+    }
+
+    .info-container {
+      margin-top: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      color: #004aad;
+    }
+
+    .info-container h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-container p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-container a {
+      color: #28a745;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     .infocorp-options {
       margin-top: 2rem;
       background-color: rgba(255, 255, 255, 0.9);
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       width: 90%;
@@ -105,21 +143,36 @@
 
     .infocorp-options h3 {
       color: #004aad;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
 
-    .infocorp-options button {
-      background-color: #28a745;
+    .option {
+      margin-bottom: 1.5rem;
+    }
+
+    .option h4 {
+      color: #28a745;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .option p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .option button {
+      background-color: #004aad;
       color: #fff;
-      padding: 0.8rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
-      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
       border: none;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
     }
 
     /* Media Queries */
@@ -136,19 +189,22 @@
         max-width: 450px;
         margin: 2rem;
       }
+
+      .infocorp-options {
+        width: 400px;
+        max-width: 450px;
+        margin: 2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Formulario de solicitud de préstamo -->
   <div class="form-container">
     <div class="logo">
       <img src="Perupaylogo.png" alt="Logo Perupay">
     </div>
     <h2>Solicita tu préstamo</h2>
-
-    <!-- Formulario de monto y cuotas -->
     <div class="form-group">
       <label for="monto">Monto del préstamo (S/):</label>
       <input type="range" id="monto" min="500" max="1000" step="50" value="500" oninput="updateCalculations()">
@@ -168,51 +224,54 @@
     <div class="form-group">
       <label for="frecuencia">Frecuencia de pago:</label>
       <select id="frecuencia" onchange="updateCalculations()">
-        <option value="semanal">Semanal</option>
+        <option value="normal">Semanal</option>
         <option value="quincenal" selected>Quincenal</option>
       </select>
     </div>
 
-    <p id="cuota-display">Tu cuota: S/500</p>
-    <button class="button" onclick="calculateCuota()">Solicitar Préstamo</button>
+    <p id="cuota-display">Cuota: S/0.00</p>
+    <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
-  <!-- Opciones para personas con Infocorp -->
   <div class="infocorp-options">
-    <h3>¿Estás en Infocorp?</h3>
-    <p>Te ofrecemos las siguientes soluciones:</p>
-    <button onclick="location.href='https://www.perupay.com/descargar-apk'">Descargar nuestra App y Recargar S/10</button>
-    <button onclick="location.href='https://www.perupay.com/prestamo-base'">Préstamo Base de S/50</button>
-    <button onclick="location.href='https://www.perupay.com/negociador-de-deudas'">Negociador de Deudas</button>
+    <h3>Opciones para personas en Infocorp</h3>
+    <div class="option">
+      <h4>Opción 1: Recargar S/10</h4>
+      <p>Descarga nuestra app, recarga S/10 y déjalos durante 5 días. Luego, podrás obtener un crédito inicial de S/100 que irá aumentando.</p>
+      <button>Solicitar</button>
+    </div>
+    <div class="option">
+      <h4>Opción 2: Préstamo base</h4>
+      <p>Recibe un préstamo base de S/50. Al pagarlo puntualmente, aumentará tu línea de crédito.</p>
+      <button>Solicitar</button>
+    </div>
+    <div class="option">
+      <h4>Opción 3: Negociador de deudas</h4>
+      <p><strong>Negociamos tus deudas con los bancos</strong> para que logres reducir el monto. Una vez pagues la nueva deuda, podrás acceder automáticamente a nuestros créditos.</p>
+      <button>Solicitar</button>
+    </div>
   </div>
 
   <script>
-    // Función para actualizar el monto y la cuota
     function updateCalculations() {
-      let monto = document.getElementById("monto").value;
-      let cuotas = document.getElementById("cuotas").value;
-      let frecuencia = document.getElementById("frecuencia").value;
+      const monto = parseFloat(document.getElementById("monto").value);
+      const cuotas = parseInt(document.getElementById("cuotas").value);
+      const frecuencia = document.getElementById("frecuencia").value;
 
-      let tasa = 0.10; // 10% por defecto
+      let interes = 0.10;
 
-      // Si la frecuencia es quincenal, se suma 2% a la tasa
       if (frecuencia === "quincenal") {
-        tasa = 0.12; // 12%
+        interes += 0.02;
       }
 
-      // Calcular la cuota
-      let cuota = monto / cuotas;
-      cuota += cuota * tasa;
+      const montoTotal = monto * (1 + interes);
+      const cuota = montoTotal / cuotas;
 
-      // Actualizar el monto y la cuota
-      document.getElementById("monto-display").innerText = `Monto seleccionado: S/ ${monto}`;
-      document.getElementById("cuota-display").innerText = `Tu cuota: S/ ${cuota.toFixed(2)}`;
+      document.getElementById("monto-display").innerText = `Monto seleccionado: S/${monto.toFixed(2)}`;
+      document.getElementById("cuota-display").innerText = `Cuota: S/${cuota.toFixed(2)}`;
     }
 
-    // Función para mostrar la cuota calculada
-    function calculateCuota() {
-      alert("Tu cuota ha sido calculada correctamente.");
-    }
+    updateCalculations();
   </script>
 
 </body>
