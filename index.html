@@ -143,10 +143,12 @@
       const cuotas = parseInt(document.getElementById("cuotas").value);
       const frecuencia = document.getElementById("frecuencia").value;
 
-      // Calcular interés
-      let interes = cuotas <= 2 ? 0.10 : 0.15; // 10% si <= 2 cuotas, 15% si > 2 cuotas
+      // Calcular interés base (10%)
+      let interes = 0.10;
+
+      // Incremento por frecuencia quincenal (+2%)
       if (frecuencia === "quincenal") {
-        interes += 0.02; // +2% si es quincenal
+        interes += 0.02;
       }
 
       // Calcular monto total
