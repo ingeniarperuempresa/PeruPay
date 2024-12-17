@@ -17,6 +17,7 @@
       background: linear-gradient(135deg, #004aad, #28a745); /* Fondo degradado */
       color: #fff;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -85,11 +86,13 @@
       color: #fff;
       padding: 0.8rem;
       font-size: 1.1rem;
-      border-radius: 5px;
+      border-radius: 20px; /* Bordes redondeados */
       text-decoration: none;
       font-weight: bold;
       margin-top: 1rem;
       display: inline-block;
+      border: none;
+      cursor: pointer;
     }
 
     #cuota-display {
@@ -97,6 +100,35 @@
       font-size: 1.2rem;
       font-weight: bold;
       color: #004aad;
+    }
+
+    /* Sección adicional */
+    .info-container {
+      margin-top: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      color: #004aad;
+    }
+
+    .info-container h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-container p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-container a {
+      color: #28a745;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -136,6 +168,11 @@
     <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
+  <div class="info-container">
+    <h3>¿Estás en Infocorp?</h3>
+    <p>No te preocupes, tenemos opciones para ayudarte a recibir tu crédito. <br> Descubre nuestras <a href="#">soluciones de crédito</a>.</p>
+  </div>
+
   <script>
     function updateCalculations() {
       // Obtener valores del formulario
@@ -168,3 +205,4 @@
 
 </body>
 </html>
+
