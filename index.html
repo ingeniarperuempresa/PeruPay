@@ -22,151 +22,126 @@
     /* Sección del logo */
     .logo {
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 0;
       background-color: #fff;
     }
 
     .logo img {
-      width: 120px; /* Ajusta el tamaño del logo */
+      width: 250px; /* Ajusta el tamaño del logo */
       height: auto;
     }
 
-    /* Sección principal (bienvenida + imagen) */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
+    /* Sección del formulario de préstamos */
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
       background-color: #fff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .hero-text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .hero-text h1 {
-      font-size: 2.5rem;
-      color: #004aad;
-      margin-bottom: 1rem;
-    }
-
-    .hero-text p {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.8;
-    }
-
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-image img {
-      max-width: 100%;
-      height: auto;
+      padding: 2rem;
       border-radius: 10px;
-    }
-
-    /* Contenedor de información adicional */
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
     h2 {
       color: #004aad;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #555;
       margin-bottom: 1.5rem;
     }
 
-    /* Botones */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    select, input[type="range"] {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-top: 0.5rem;
+    }
+
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+    }
+
     .button {
-      display: inline-block;
       background-color: #28a745;
       color: #fff;
       padding: 0.75rem 1.5rem;
-      text-decoration: none;
       font-size: 1.1rem;
       border-radius: 5px;
+      text-decoration: none;
       transition: background-color 0.3s ease;
+      margin-top: 2rem;
     }
 
     .button:hover {
       background-color: #218838;
     }
-
-    .secondary-button {
-      display: inline-block;
-      background-color: #007bff;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .secondary-button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Responsividad */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .hero-text {
-        margin-bottom: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
+
   <!-- Sección del logo -->
   <div class="logo">
     <img src="Perupaylogo.png" alt="Logo Perupay">
   </div>
 
-  <!-- Sección principal con texto e imagen -->
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Bienvenido a Perupay</h1>
-      <p>La mejor solución de préstamos rápidos y seguros. Ofrecemos desembolsos garantizados en menos de 1 hora y montos de hasta 1000 soles. Tu mejor opción financiera, ¡sin complicaciones!</p>
+  <!-- Formulario de préstamo -->
+  <div class="form-container">
+    <h2>Solicita tu préstamo</h2>
+
+    <!-- Selector de monto -->
+    <div class="form-group">
+      <label for="monto">Monto del préstamo (S/):</label>
+      <input type="range" id="monto" name="monto" min="500" max="1000" step="50" value="500" oninput="updateMonto()">
+      <div class="range-labels">
+        <span>S/500</span>
+        <span>S/1000</span>
+      </div>
+      <p id="monto-display">Monto seleccionado: S/500</p>
     </div>
-    <div class="hero-image">
-      <img src="https://cdn.leonardo.ai/users/72dd46c9-d613-459c-802f-6971422727ea/generations/b155f23f-f4c2-4ffc-bcf2-e977e87993a9/Leonardo_Phoenix_A_vibrant_and_modern_illustration_of_a_divers_0.jpg" alt="Imagen ilustrativa">
+
+    <!-- Selector de número de cuotas -->
+    <div class="form-group">
+      <label for="cuotas">Número de cuotas:</label>
+      <select id="cuotas" name="cuotas">
+        <option value="3">3 cuotas</option>
+        <option value="6">6 cuotas</option>
+        <option value="9">9 cuotas</option>
+        <option value="12">12 cuotas</option>
+      </select>
     </div>
+
+    <!-- Selector de frecuencia de pago -->
+    <div class="form-group">
+      <label for="frecuencia">Frecuencia de pago:</label>
+      <select id="frecuencia" name="frecuencia">
+        <option value="semanal">Semanal</option>
+        <option value="quincenal">Quincenal</option>
+      </select>
+    </div>
+
+    <!-- Botón de envío -->
+    <a href="#" class="button">Solicitar Préstamo</a>
   </div>
 
-  <!-- Sección de información adicional -->
-  <div class="container">
-    <h2>Préstamos al 10% de interés</h2>
-    <p>Desde <strong>500 soles</strong> hasta <strong>1000 soles</strong>, con un desembolso garantizado en menos de una hora.</p>
-    <a href="#" class="button">Pedir Préstamo</a>
-  </div>
+  <script>
+    // Función para actualizar el monto seleccionado
+    function updateMonto() {
+      var monto = document.getElementById("monto").value;
+      document.getElementById("monto-display").innerText = "Monto seleccionado: S/" + monto;
+    }
+  </script>
 
-  <!-- Sección secundaria -->
-  <div class="container">
-    <h2>¿Estás en Infocorp?</h2>
-    <p>¡No te preocupes! Tenemos soluciones de crédito adaptadas a tus necesidades.</p>
-    <a href="#" class="secondary-button">Ver Soluciones</a>
-  </div>
 </body>
 </html>
